@@ -1,3 +1,5 @@
+@import "components/all";
+
 * {
   margin: 0;
   padding: 0;
@@ -13,70 +15,11 @@ li {
   list-style: none;
 }
 
-@mixin flexBox($space, $size) {
-  display: flex;
-  justify-content: $space;
-  align-items: center;
-  height: $size;
-}
-
-.shop {
-  &_cart {
-    position: absolute;
-    @include flexBox(center, none);
-    border-radius: 50%;
-    padding: 10px;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 80px;
-    z-index: 10;
-    background: linear-gradient(to right, #f8e0e4, #ffe8dc);
-    img {
-      width: 35px;
-    }
-    cursor: pointer;
-  }
-  &_number {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: crimson;
-    color: #ffffff;
-    text-align: center;
-    line-height: 30px;
-    top: -8px;
-    right: -5px;
-    border-radius: 50%;
-  }
-}
-.text::before {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  border-radius: 10px;
-  width: 50px;
-  height: 2px;
-  background-color: rgba($color: #000000, $alpha: 0.4);
-}
 .btn {
   outline: none;
   border: none;
   background: transparent;
   cursor: pointer;
-}
-.heart {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  cursor: pointer;
-  @include flexBox(center, none);
-  padding: 8px;
-  border-radius: 15px;
-  border: 1px solid rgba($color: #000000, $alpha: 0.1);
-  img {
-    width: 25px;
-  }
 }
 
 // ================== overlay =================
@@ -88,9 +31,12 @@ li {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  background-color: rgba($color: #000000, $alpha: 0.4);
+  z-index: 14;
+  background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
+  &.active {
+    display: inherit;
+  }
 }
 
 // ================== wraper =================
@@ -115,177 +61,5 @@ li {
   @media screen and (max-width: 767.98px) {
     max-width: none;
     margin: 0;
-  }
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  padding: 0 20px;
-
-  &__container {
-    @include flexBox(space-between, 100%);
-    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-    border-radius: 10px;
-  }
-  &_logo {
-    @include flexBox(none, 100%);
-    img {
-      width: 45px;
-      margin-right: 10px;
-    }
-  }
-  &_subtitle {
-    p {
-      opacity: 0.5;
-    }
-  }
-}
-.nav {
-  .nav {
-    &_menu {
-      @include flexBox(center, 100%);
-    }
-    &_list {
-      margin-left: 8px;
-    }
-  }
-}
-
-// ==================== mains ==================
-.main {
-  &__container {
-    padding: 180px 0 0 0;
-  }
-  &_text {
-    position: relative;
-    @include flexBox(space-between, 100%);
-  }
-  &_search {
-    position: relative;
-    img {
-      position: absolute;
-      right: 10px;
-      bottom: 50%;
-      transform: translateY(50%);
-      cursor: pointer;
-    }
-    input {
-      width: 280px;
-      height: 40px;
-      padding: 10px 30px 10px 8px;
-      outline: none;
-      border-radius: 30px;
-      border: 1px solid rgba($color: #000000, $alpha: 0.1);
-    }
-  }
-
-  &_shopping {
-    @include flexBox(space-between, 100%);
-    flex-wrap: wrap;
-
-    &_items {
-      position: relative;
-      @include flexBox(space-around, 100%);
-      width: 285px;
-      flex-direction: column;
-      border: 1px solid rgba($color: #000000, $alpha: 0.1);
-      border-radius: 20px;
-      box-shadow: 1px 3px 1px rgba($color: #0c0c0c, $alpha: 0.1);
-      padding: 0 25px 25px 25px;
-      margin: 60px 8px 0 8px;
-      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-      &:hover {
-        box-shadow: 1px 3px 10px rgba($color: #0c0c0c, $alpha: 0.1);
-        transform: translateY(-5px);
-      }
-
-      &_img {
-        img {
-          width: 200px;
-        }
-      }
-    }
-  }
-
-  &_description {
-    @include flexBox(center, 100%);
-    width: 100%;
-    flex-direction: column;
-    &_content {
-      width: 100%;
-      @include flexBox(center, 100%);
-      ul {
-        overflow: auto;
-        width: 100%;
-        @include flexBox(center, 100%);
-        li {
-          margin: 8px 0 8px 10px;
-          background: linear-gradient(to right, #0cebeb, #29ffc6);
-          color: #fff;
-          padding: 10px;
-          border-radius: 50%;
-          cursor: pointer;
-          .active {
-            background: linear-gradient(to right, #cb2d3e, #ef473a);
-          }
-        }
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &_shipping {
-    width: 100%;
-    @include flexBox(space-between, 100%);
-  }
-}
-
-.drawer {
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 365px;
-  background-color: #ffffff;
-  height: 100%;
-  z-index: 5;
-  box-shadow: -2px 0 10px rgba($color: #000, $alpha: 0.4);
-  h1 {
-    margin: 15px;
-  }
-  &_img {
-    img {
-      width: 90px;
-    }
-  }
-  &_cart {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-  }
-
-  &_item {
-    @include flexBox(space-between, 100%);
-    border: 1px solid rgba($color: #000000, $alpha: 0.1);
-    padding: 10px;
-    margin: 8px 15px;
-    border-radius: 10px;
-  }
-
-  &_text {
-    margin: 0 calc(10px);
-  }
-
-  &_close {
-    cursor: pointer;
-    img {
-      width: 20px;
-    }
   }
 }

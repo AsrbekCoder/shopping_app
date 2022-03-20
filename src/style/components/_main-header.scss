@@ -1,0 +1,54 @@
+.text::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  border-radius: 10px;
+  width: 50px;
+  height: 2px;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  @media screen and (max-width: 604px) {
+    bottom: -5px;
+  }
+}
+
+.main {
+  &__container {
+    width: 100%;
+    padding: 180px 0 0 0;
+  }
+  &_text {
+    margin: 0 20px 35px 20px;
+    position: relative;
+    @include flexBox(space-between, 100%);
+  }
+  @media screen and (max-width: 604px) {
+    &_text {
+      h1 {
+        font-size: 20px;
+      }
+    }
+    &_search {
+      input {
+        width: 130px !important;
+      }
+    }
+  }
+  &_search {
+    position: relative;
+    img {
+      position: absolute;
+      right: 10px;
+      bottom: 50%;
+      transform: translateY(50%);
+      cursor: pointer;
+    }
+    input {
+      width: 280px;
+      height: 40px;
+      padding: 10px 30px 10px 8px;
+      outline: none;
+      border-radius: 30px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  padding: 0 20px;
+  z-index: 10;
+  background-color: #fff;
+
+  &__container {
+    @include flexBox(space-between, 100%);
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    border-radius: 10px;
+  }
+  &_logo {
+    @include flexBox(none, 100%);
+    img {
+      width: 45px;
+      margin-right: 10px;
+    }
+  }
+  &_subtitle {
+    p {
+      opacity: 0.5;
+    }
+  }
+
+  @media screen and (max-width: 604px) {
+    &_logo {
+      @include flexBox(none, 100%);
+      img {
+        width: 35px;
+        margin-right: 10px;
+      }
+    }
+    &_subtitle {
+      h1 {
+        font-size: 15px;
+      }
+      p {
+        font-size: 15px;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.nav {
+  .nav {
+    &_menu {
+      @include flexBox(center, 100%);
+    }
+    &_list {
+      margin-left: 8px;
+    }
+  }
+}
