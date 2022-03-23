@@ -6,6 +6,11 @@
 }
 
 .main {
+  &_colors {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-style: oblique;
+  }
   &_shopping {
     @include flexBox(flex-start, 100%);
     flex-wrap: wrap;
@@ -19,7 +24,7 @@
       border: 1px solid rgba($color: #000000, $alpha: 0.1);
       border-radius: 20px;
       box-shadow: 1px 3px 1px rgba($color: #0c0c0c, $alpha: 0.1);
-      padding: 0 25px 25px 25px;
+      padding: 0 25px 0 25px;
       margin: 15px auto;
       transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
       &:hover {
@@ -66,6 +71,24 @@
 
   &_shipping {
     width: 100%;
+    margin: 1rem 0;
     @include flexBox(space-between, 100%);
+  }
+}
+
+.main_shipping_add {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 9rem;
+  height: 2.5rem;
+  background-color: #f1f1f1;
+  border-radius: 0.5rem;
+  span {
+    &:nth-child(1) {
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 0.5rem;
+    }
   }
 }

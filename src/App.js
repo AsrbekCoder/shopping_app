@@ -1,4 +1,4 @@
-import { Cart, Drawer, Header, PopupCart } from "./components";
+import { Cart, Drawer, Header } from "./components";
 import "./style/style.scss";
 
 import { useState } from "react";
@@ -40,9 +40,11 @@ const App = () => {
         <div className="shop_number">{itemsGeter.length}</div>
       </div>
 
-      <div className={boolenOverlay ? "overlay active" : "overlay"}>
-        <Drawer itemsGeter={itemsGeter} setBoolenOverlay={setBoolenOverlay} />
-      </div>
+      <Drawer
+        itemsGeter={itemsGeter}
+        setBoolenOverlay={setBoolenOverlay}
+        boolenOverlay={boolenOverlay}
+      />
       <Header />
 
       <main className="main__container">
@@ -69,9 +71,6 @@ const App = () => {
               .map((e) => <Cart item={e} getItems={getItems} key={e._id} />)}
         </div>
       </main>
-
-      <PopupCart />
-      <footer></footer>
     </div>
   );
 };

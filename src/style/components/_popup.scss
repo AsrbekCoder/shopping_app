@@ -1,10 +1,10 @@
 .popup {
   &_cart {
     position: absolute;
-    top: 50%;
+    top: -200%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 26rem;
+    width: 26rem;
     max-height: 95vh;
     cursor: auto;
     padding: 2rem;
@@ -12,12 +12,17 @@
     background-color: #fff;
     border-radius: 1.5rem;
     box-shadow: 0 3px 15px rgba($color: #000000, $alpha: 0.2);
-    z-index: 1;
+    z-index: 10;
+    transition: 0.5s;
+    &.active {
+      top: 50%;
+    }
   }
 
   // heaeder popup
 
   &_header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,9 +33,10 @@
       font-size: 2rem;
       border-radius: 0.5rem;
       cursor: pointer;
-      transition: box-shadow 0.5s ease-in;
+      transition: box-shadow 0.4s ease-in-out;
+      box-shadow: 0 3px 15px rgba($color: #000000, $alpha: 0.2);
       &:hover {
-        box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.2);
+        box-shadow: inherit;
       }
     }
   }
@@ -105,6 +111,49 @@
       &:hover {
         box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
       }
+    }
+  }
+
+  @media screen and (max-width: 767.98px) {
+    &_cart {
+      position: relative;
+      top: 200% !important;
+      transform: translate(-50%, -100%);
+      width: 100%;
+      border-radius: 0;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      &.active {
+        top: 100% !important;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 65px;
+        z-index: 20;
+        left: 0;
+        max-width: 40px;
+        height: 50px;
+        border-radius: 1rem;
+        background-color: red;
+      }
+    }
+    &_header {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      padding: 0 30px;
+    }
+    &_img {
+      height: 60%;
+      overflow: hidden;
+      margin: 0.5rem 0;
+    }
+  }
+
+  @media screen and(max-width:767.98px) and (min-width: 504px) {
+    &_cart {
+      height: 60%;
     }
   }
 }

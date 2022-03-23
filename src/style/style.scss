@@ -25,17 +25,20 @@ li {
 // ================== overlay =================
 
 .overlay {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: fixed;
   right: 0;
-  top: 0;
+  top: 200%;
   width: 100%;
   height: 100%;
   z-index: 14;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   &.active {
-    display: inherit;
+    opacity: 1;
+    visibility: inherit;
+    top: 0;
   }
 }
 
