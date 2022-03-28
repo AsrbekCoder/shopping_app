@@ -4,6 +4,7 @@ import "./style/style.scss";
 import { useState } from "react";
 import Api from "./server";
 import React from "react";
+import CartBox from "./components/CartBox";
 
 const App = () => {
   const [itemsGeter, setitemsGeter] = useState([]);
@@ -30,22 +31,14 @@ const App = () => {
   }, []);
   return (
     <div className="wrapper">
-      <div
-        className={
-          itemsGeter.length > 0 ? "shop_cart shop_cart_active" : "shop_cart"
-        }
-        onClick={onClickBoolen}
-      >
-        <img src="../img/cart.svg" alt="" />
-        <div className="shop_number">{itemsGeter.length}</div>
-      </div>
+      <Header />
+      <CartBox onClickBoolen={onClickBoolen} itemsGeter={itemsGeter} />
 
       <Drawer
         itemsGeter={itemsGeter}
         setBoolenOverlay={setBoolenOverlay}
         boolenOverlay={boolenOverlay}
       />
-      <Header />
 
       <main className="main__container">
         <div className="main_text text">

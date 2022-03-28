@@ -1,19 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setcartItem } from "../redux/action/setCartItem";
 import PopupCart from "./PopupCart";
 
 const Cart = ({ item, getItems }) => {
   const [first, setfirst] = React.useState(false);
   const [popupBolen, setPopupBolen] = React.useState(false);
 
-  const handleClick = (obj) => {
+  const handleClick = () => {
     setfirst(() => !first);
-    console.log(obj);
   };
+  const dispatch = useDispatch();
 
   const handleClickPlus = (obj) => {
+    dispatch(setcartItem(obj));
     getItems(obj);
   };
-
   const hadlePopup = () => {
     setPopupBolen(true);
   };

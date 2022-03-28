@@ -45,7 +45,7 @@
 
 .drawer {
   position: fixed;
-  right: 0;
+  right: -100%;
   top: 0;
   width: 365px;
   background-color: #ffffff;
@@ -53,9 +53,15 @@
   z-index: 15;
   box-shadow: -2px 0 10px rgba($color: #000, $alpha: 0.4);
   padding: 0 15px;
+  transition: right 0.4s;
   display: flex;
   flex-direction: column;
-
+  @media screen and (max-width: 540px) {
+    width: 100%;
+  }
+  &.active {
+    right: 0;
+  }
   &_header {
     @include flexBox(space-between, none);
     margin-top: 10px;

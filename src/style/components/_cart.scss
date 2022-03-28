@@ -12,7 +12,7 @@
     font-style: oblique;
   }
   &_shopping {
-    @include flexBox(flex-start, 100%);
+    @include flexBox(space-between, 100%);
     flex-wrap: wrap;
 
     &_items {
@@ -46,20 +46,61 @@
     flex-direction: column;
     &_content {
       width: 100%;
-      @include flexBox(center, 100%);
+      @include flexBox(center, auto);
       ul {
         overflow: auto;
         width: 100%;
         @include flexBox(center, 100%);
         li {
-          margin: 8px 0 8px 10px;
-          background: linear-gradient(to right, #0cebeb, #29ffc6);
-          color: #fff;
-          padding: 10px;
-          border-radius: 50%;
+          position: relative;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          margin: 0 0.2rem;
+          box-shadow: inset 0 0 8px rgba($color: #000000, $alpha: 0.1),
+            0 0 5px rgba($color: #000000, $alpha: 0.1);
           cursor: pointer;
-          .active {
-            background: linear-gradient(to right, #cb2d3e, #ef473a);
+          overflow: hidden;
+
+          span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          &:hover {
+            span {
+              animation: animateSize 0.4s linear 1;
+              animation-fill-mode: forwards;
+              @keyframes animateSize {
+                0% {
+                  top: 0;
+                  left: 50%;
+                }
+                20% {
+                  top: -100%;
+                  left: 50%;
+                }
+                40% {
+                  top: -100%;
+                  left: 350%;
+                }
+                60% {
+                  top: 150%;
+                  left: 50%;
+                }
+                100% {
+                  top: 0;
+                  left: 50%;
+                }
+              }
+            }
+          }
+
+          &.active {
+            box-shadow: 0 8px 10px rgba(128, 255, 0, 0.233);
+            border: 1px solid chartreuse;
           }
         }
         &::-webkit-scrollbar {
