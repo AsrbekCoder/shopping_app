@@ -1,5 +1,6 @@
 import React from "react";
 import uuid from "react-uuid";
+import MoneyCompiler from "../Helper/MoneyCompiler";
 
 const PopupCart = ({ item, popupBolen, setPopupBolen, handleClickPlus }) => {
   const [counter, setCounter] = React.useState(1);
@@ -28,6 +29,7 @@ const PopupCart = ({ item, popupBolen, setPopupBolen, handleClickPlus }) => {
     sizes: sizeActive,
     productImgUrl: item.productImgUrl,
     prise: priseSetting ? priseSetting : item.prise,
+    quality: counter,
   };
 
   const handleGetSelectedSizes = (id) => {
@@ -39,7 +41,7 @@ const PopupCart = ({ item, popupBolen, setPopupBolen, handleClickPlus }) => {
   const sizeSorting = [...new Set(...sizeToSet)];
 
   React.useEffect(() => {
-    setPriseSetting(Number(item.prise.split(" ").join("") * counter));
+    setPriseSetting(item.prise * counter);
   }, [counter, item.prise, setPriseSetting]);
   return (
     <div className={popupBolen ? "overlay active" : "overlay"}>
@@ -72,7 +74,10 @@ const PopupCart = ({ item, popupBolen, setPopupBolen, handleClickPlus }) => {
             {setSizeFalse ? <p>Pla se slect size</p> : null}
             <span>Jami</span>{" "}
             <b>
-              {priseSetting ? priseSetting : item.prise} <span>so'm</span>
+              {priseSetting
+                ? MoneyCompiler(Number(priseSetting))
+                : MoneyCompiler(Number(item.prise))}{" "}
+              <span>so'm</span>
             </b>
           </div>
         </div>

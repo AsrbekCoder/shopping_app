@@ -16,7 +16,6 @@ const Header = () => {
             <li className="nav_list">
               <img src="../../img/heart.svg" alt="" />
             </li>
-            <li className="nav_list">12 000 so'm</li>
             <li className="nav_list">
               <img src="../../img/user.svg" alt="" />
             </li>

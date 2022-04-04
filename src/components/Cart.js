@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import MoneyCompiler from "../Helper/MoneyCompiler";
 import { setcartItem } from "../redux/action/setCartItem";
 import PopupCart from "./PopupCart";
 
@@ -49,7 +50,7 @@ const Cart = ({ item, getItems }) => {
 
           <div className="main_shipping_add">
             <span>+</span>
-            <span>{item.prise} so'm</span>
+            <span>{MoneyCompiler(Number(item.prise))} so'm</span>
           </div>
         </div>
       </div>

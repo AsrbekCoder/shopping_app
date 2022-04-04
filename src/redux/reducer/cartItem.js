@@ -4,14 +4,22 @@ const initialState = {
 };
 
 const cartItem = (state = initialState, action) => {
-  if (action.type === "ADDED_PRODUCT") {
-    return {
-      ...state,
-      item: [...state.item, action.payload],
-      isLoading: true,
-    };
+  switch (action.type) {
+    case "ADDED_PRODUCT":
+      return {
+        ...state,
+        item: [...state.item, action.payload],
+        isLoading: true,
+      };
+
+    case "DELETED_PRODUCT":
+      return {
+        ...state,
+        item: state.item.filter((e) => e._id !== action.payload),
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default cartItem;
